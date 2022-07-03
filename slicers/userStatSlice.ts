@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../selector/store";
 
 interface UserStatState {
     userStat: {
@@ -30,6 +31,6 @@ export const userStatSlice = createSlice({
 
 export const { setUserStat } = userStatSlice.actions;
 
-export const userStatSelector = (state: UserStatState) => state.userStat;
+export const userStatSelector = (state: RootState) => state.userStat.userStat;
 
 export default userStatSlice.reducer;

@@ -3,14 +3,20 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useEffect } from "react";
 import { API_URL } from "../utils";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserStat, userStatSelector } from "../slicers/userStatSlice";
 
 const Home: NextPage = () => {
+
+    const dispatch = useDispatch()
+    const userStat = useSelector(userStatSelector)
+    console.log('userStat', userStat)
 
     useEffect(() => {
         const USER_URL = `${API_URL}/users/lil-shimon`;
         fetch(USER_URL)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => dispatch(setUserStat(data)))
     }, [])
 
     return (
@@ -20,15 +26,7 @@ const Home: NextPage = () => {
             </Head>
 
             <main className={styles.main}>
-                <h1 className={styles.title}>
-                    Github Stat
-                </h1>
-
-                <p className={styles.description}>
-                </p>
-
-                <div className={styles.grid}>
-                </div>
+                <p>{userStat.name}</p>
             </main>
 
             <footer className={styles.footer}>
