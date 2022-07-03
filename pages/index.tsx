@@ -7,7 +7,10 @@ import { API_URL } from "../utils";
 const Home: NextPage = () => {
 
     useEffect(() => {
-        console.log("api", API_URL)
+        const USER_URL = `${API_URL}/users/lil-shimon`;
+        fetch(USER_URL)
+            .then(res => res.json())
+            .then(data => console.log(data))
     }, [])
 
     return (
