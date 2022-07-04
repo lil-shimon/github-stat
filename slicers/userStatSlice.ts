@@ -12,6 +12,7 @@ interface UserStatState {
         name?: string
         public_repos?: number
         repos_url?: string
+        login?: string
     }
 }
 
