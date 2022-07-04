@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { API_URL } from "../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserStat, userStatSelector } from "../slicers/userStatSlice";
+import { UserProfileComponent } from "../components/organisms/user_profile";
 
 const Home: NextPage = () => {
 
@@ -27,6 +28,8 @@ const Home: NextPage = () => {
 
             <main className={styles.main}>
                 <p>{userStat.name}</p>
+                {userStat.name && userStat.avatar_url &&
+                    <UserProfileComponent name={userStat.name} avatarUrl={userStat.avatar_url}/>}
             </main>
 
             <footer className={styles.footer}>
