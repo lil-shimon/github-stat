@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { Avatar, Wrap, WrapItem } from "@chakra-ui/react";
+import { Image, Wrap, WrapItem } from "@chakra-ui/react";
 
 interface UserProfileProps {
     name: string
@@ -8,13 +8,12 @@ interface UserProfileProps {
 
 const UserProfile: FC<UserProfileProps> = ({ name, avatarUrl }) => {
     return (
-        <>
-            <Wrap>
-                <WrapItem>
-                    <Avatar name={name} src={avatarUrl}/>
-                </WrapItem>
-            </Wrap>
-        </>
+        <Wrap>
+            <WrapItem>
+                <Image borderWidth={2} borderStyle={'solid'} alt={name} src={avatarUrl} boxSize={'150px'}
+                       borderRadius={'100px'} maxWidth={'150px'}/>
+            </WrapItem>
+        </Wrap>
     )
 }
 
